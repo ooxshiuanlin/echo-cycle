@@ -8,34 +8,34 @@
   <style>
     html{scroll-behavior:smooth}
     body{margin:0;padding:0;font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;color:#fff;line-height:1.85;background:#000;overflow-x:hidden}
-    header{position:fixed;top:0;width:100%;background:rgba(11,11,11,.65);backdrop-filter:saturate(120%) blur(8px);-webkit-backdrop-filter:saturate(120%) blur(8px);color:#fff;text-align:center;padding:30px 0;z-index:1000;transition:background .45s ease, box-shadow .45s ease, padding .5s ease, opacity .5s ease;box-shadow:0 2px 10px rgba(0,0,0,.4)}
-/* Header background states */
-header.header-clear{background:rgba(11,11,11,.12);box-shadow:0 1px 6px rgba(0,0,0,.18)}
-header.header-mid{background:rgba(11,11,11,.45);box-shadow:0 2px 10px rgba(0,0,0,.28)}
-header.header-solid{background:rgba(11,11,11,.78);box-shadow:0 6px 22px rgba(0,0,0,.45)}
-    h1{margin:0;font-size:2em;letter-spacing:1px}
-    body.scrolled header{padding:10px 0;opacity:.9}
+
+    header{position:fixed;top:0;width:100%;text-align:center;padding:30px 0;z-index:1000;transition:all .5s ease;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(12px)}
+    body.scrolled header{background:rgba(10,10,10,0.7);padding:12px 0;}
+
+    h1{margin:0;font-size:2em;letter-spacing:1px;transition:opacity .5s ease}
 
     nav{display:flex;justify-content:center;gap:.6rem;margin-top:8px;flex-wrap:wrap}
-    nav a{position:relative;overflow:hidden;color:#aefcff;text-decoration:none;padding:.45rem .95rem;border:1px solid #1c2e2e;border-radius:999px;font-size:.9rem;background:#101414;transition:background .35s ease,color .35s ease,border-color .35s ease,box-shadow .45s ease,transform .2s ease;opacity:.95}
-    nav a:hover{background:#162121;color:#fff;transform:translateY(-2px) scale(1.03);transition:transform .15s ease-out, background .25s ease, box-shadow .4s ease;box-shadow:0 4px 12px rgba(0,255,255,.12);}
-    nav a.active{background:#0c1c1c;color:#eaffff;border-color:#2aa6a6;box-shadow:inset 0 0 0 1px rgba(42,166,166,.8), inset 0 10px 26px rgba(0,255,255,.12), 0 8px 22px rgba(0,255,255,.08);opacity:1}
+    nav a{position:relative;overflow:hidden;color:#aefcff;text-decoration:none;padding:.45rem .95rem;border:1px solid #1c2e2e;border-radius:999px;font-size:.9rem;background:#101414;transition:all .35s ease;opacity:.95}
+    nav a:hover{background:#162121;color:#fff;transform:translateY(-2px) scale(1.03);box-shadow:0 4px 12px rgba(0,255,255,.12)}
+    nav a.active{background:#0c1c1c;color:#eaffff;border-color:#2aa6a6;box-shadow:inset 0 0 0 1px rgba(42,166,166,.8), inset 0 10px 26px rgba(0,255,255,.12), 0 8px 22px rgba(0,255,255,.08);}
 
-    section{height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden}
+    nav a::after{content:"";position:absolute;left:12%;right:12%;bottom:-2px;height:2px;background:linear-gradient(90deg,transparent,#7ff,transparent);transform:scaleX(0);transform-origin:center;transition:transform .45s ease}
+    nav a.active::after{transform:scaleX(1)}
+
+    section{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden}
     section .content{max-width:800px;z-index:2;position:relative}
-
-    section::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;background-size:cover;background-position:center;filter:brightness(1.2) contrast(1.1) saturate(1.05);animation:slowZoom 40s ease-in-out infinite alternate}
-    section::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.7));z-index:1;}
+    section::before{content:"";position:absolute;inset:0;z-index:0;opacity:.55;background-size:cover;background-position:center;filter:brightness(1.2) contrast(1.1);animation:slowZoom 40s ease-in-out infinite alternate}
+    section::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,0,0,0.7));z-index:1}
 
     @keyframes slowZoom {from{transform:scale(1)}to{transform:scale(1.05)}}
 
-    .intro::before{background-image:url('preview.jpg'), url('preview.png');}
-    .music::before{background-image:url('music-bg.jpg'), url('music-bg.png');}
-    .sustain::before{background-image:url('sustain-bg.jpg'), url('sustain-bg.png');}
-    .making::before{background-image:url('making-bg.jpg'), url('making-bg.png');}
-    .team::before{background-image:url('team-bg.jpg'), url('team-bg.png');}
+    .intro::before{background-image:url('preview.jpg')}
+    .music::before{background-image:url('music-bg.jpg')}
+    .sustain::before{background-image:url('sustain-bg.jpg')}
+    .making::before{background-image:url('making-bg.jpg')}
+    .team::before{background-image:url('team-bg.jpg')}
 
-    h2{font-size:1.8em;margin-bottom:.5em}
+    h2{font-size:1.6em;margin-bottom:.4em}
     p{max-width:700px;font-size:1.05em;color:#e0e0e0;margin:.3em auto}
     .lead{font-size:1.2em;color:#fff}
 
@@ -44,39 +44,20 @@ header.header-solid{background:rgba(11,11,11,.78);box-shadow:0 6px 22px rgba(0,0
     footer{text-align:center;background:#0b0b0b;padding:20px;color:#888;font-size:.9rem}
 
     @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-    .reveal{opacity:0;animation:fadeInUp .8s ease forwards}
-      
-    /* === Text fade + gradient sheen === */
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-    @keyframes sheen{0%{opacity:0;transform:translateX(-120%)}30%{opacity:.85}100%{opacity:0;transform:translateX(120%)}}
     .reveal{opacity:0;transform:translateY(14px);position:relative}
     .reveal.on{opacity:1;transform:none;animation:fadeInUp .7s ease both}
-    .reveal::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.18) 50%,transparent 100%);pointer-events:none;opacity:0}
-    .reveal.on::after{animation:sheen 1.2s .15s ease both}
-  
-    /* underline grow + inner sheen */
-nav a::after{content:"";position:absolute;left:12%;right:12%;bottom:-2px;height:2px;background:linear-gradient(90deg,transparent,#7ff,transparent);transform:scaleX(0);transform-origin:center;transition:transform .45s ease}
-nav a.active::after{transform:scaleX(1)}
-nav a::before{content:"";position:absolute;left:8%;right:8%;top:36%;height:34%;background:linear-gradient(to bottom,rgba(255,255,255,.16),rgba(255,255,255,0));border-radius:999px;opacity:0;transition:opacity .45s ease}
-nav a.active::before{opacity:.55}
 
-/* click press feedback */
-    nav a:active{transform:scale(.95);box-shadow:inset 0 0 10px rgba(0,255,255,.25);transition:transform .1s ease, box-shadow .2s ease}
-  
-    /* Smooth header opacity by section */
-    .intro{scroll-margin-top:120px}
-    .music,.sustain,.making,.team{scroll-margin-top:120px}
   </style>
 </head>
 <body>
   <header>
     <h1>踏聲樂章 EchoCycle</h1>
     <nav>
-      <a href="#intro">Introduction</a>
-      <a href="#music">Music</a>
-      <a href="#sustainability">Sustainability</a>
-      <a href="#making">Making‑of</a>
-      <a href="#team">Team</a>
+      <a href="#intro">作品簡介 / Introduction</a>
+      <a href="#music">音樂設計 / Music</a>
+      <a href="#sustainability">永續 / Sustainability</a>
+      <a href="#making">製作記錄 / Making-of</a>
+      <a href="#team">團隊 / Team</a>
     </nav>
   </header>
 
@@ -105,8 +86,7 @@ nav a.active::before{opacity:.55}
 
   <section class="making" id="making">
     <div class="content">
-      <h2 class="reveal">施工記錄 · Making‑of</h2>
-      <p class="reveal">以下影片展示結構測試、感測整合、燈控與多聲道音訊配置。</p>
+      <h2 class="reveal">施工記錄 · Making-of</h2>
       <iframe class="video reveal" src="https://www.youtube.com/embed/NRmSQRPIjX4?autoplay=1&mute=1&loop=1&playlist=NRmSQRPIjX4&modestbranding=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     </div>
   </section>
@@ -114,41 +94,31 @@ nav a.active::before{opacity:.55}
   <section class="team" id="team">
     <div class="content">
       <h2 class="reveal">專案團隊 · Team</h2>
-      <p class="reveal"><strong>主持：</strong>林軒丞（國立成功大學 助理教授）</p>
-      <p class="reveal"><strong>聲音創作：</strong>王翕慈（RUI）</p>
-      <p class="reveal"><strong>執行團隊：</strong>徐薇、范姜政佑、邱靖惠、許佩賢、姜佳欣</p>
-      <p class="reveal"><strong>互動系統：</strong>互動空間運算研究室（ISC Lab, TechnoArt / NCKU）</p>
-      <p class="reveal"><strong>合作單位：</strong>衛武營國家藝術文化中心</p>
-      <p class="reveal"><strong>聯絡：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></p>
+      <p class="reveal"><strong>主持 / Lead Artist：</strong>林軒丞（國立成功大學 助理教授）</p>
+      <p class="reveal"><strong>聲音創作 / Sound Artist：</strong>王翕慈（RUI）</p>
+      <p class="reveal"><strong>執行團隊 / Team Members：</strong>徐薇、范姜政佑、邱靖惠、許佩賢、姜佳欣</p>
+      <p class="reveal"><strong>互動系統 / System Integration：</strong>互動空間運算研究室（ISC Lab, TechnoArt / NCKU）</p>
+      <p class="reveal"><strong>合作單位 / Partners：</strong>衛武營國家藝術文化中心</p>
+      <p class="reveal"><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></p>
     </div>
   </section>
 
-  <footer>© 2025 EchoCycle — National Cheng Kung University · Techno‑Art Program</footer>
+  <footer>© 2025 EchoCycle — National Cheng Kung University · Techno-Art Program</footer>
 
   <script>
-    // header shrink
-    window.addEventListener('scroll',()=>{document.body.classList.toggle('scrolled',window.scrollY>60)});
+    window.addEventListener('scroll',()=>{
+      const scrollY = window.scrollY;
+      document.body.classList.toggle('scrolled', scrollY>10);
+    });
 
-    // reveal text
     const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); }}); },{threshold:.2});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // soft highlight current nav link
     const sections=[...document.querySelectorAll('section')];
     const links=[...document.querySelectorAll('header nav a')];
     const setActive=id=>{ links.forEach(a=>{ const is = a.getAttribute('href')===`#${id}`; a.classList.toggle('active', is); }); };
     const navIO=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          const id=e.target.id; setActive(id);
-          // header transparency mapping by section
-          const h=document.querySelector('header');
-          h.classList.remove('header-clear','header-mid','header-solid');
-          if(id==='intro'){h.classList.add('header-clear');}
-          else if(id==='music' || id==='sustainability'){h.classList.add('header-mid');}
-          else {h.classList.add('header-solid');}
-        }
-      });
+      entries.forEach(e=>{ if(e.isIntersecting){ setActive(e.target.id); }});
     },{rootMargin:'-45% 0% -45% 0%'});
     sections.forEach(s=>navIO.observe(s));
   </script>
