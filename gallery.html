@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Journal | EchoCycle</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background: #111;
+      color: #eee;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      display: flex; justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0);
+      transition: background 0.6s ease;
+      z-index: 1000;
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    header.scrolled {
+      background: rgba(0,0,0,0.75);
+    }
+
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 15px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #fff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+      text-shadow: 0 0 8px rgba(255,255,255,0.4);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+
+    main {
+      padding: 120px 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      justify-items: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .photo {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .photo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255,255,255,0.15);
+    }
+
+    .caption {
+      font-size: 13px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="navbar">
+    <nav>
+      <a href="#intro">Introduction</a>
+      <a href="#music">Music</a>
+      <a href="#sustain">Sustainability</a>
+      <a href="#making">Making-of</a>
+      <a href="#team">Team</a>
+      <a href="#photo" class="active">Photo Journal</a>
+    </nav>
+  </header>
+
+  <main id="photo">
+    <!-- Gallery auto generated -->
+    <script>
+      const gallery = [
+        "000-1.jpg","000-2.jpg","000-3.jpg","000-4.jpg","000-5.jpg",
+        "000-6.jpg","000-7.jpg","000-8.jpg","000-9.jpg","000-10.jpg",
+        "000-11.jpg","000-12.jpg","000-13.jpg","000-14.jpg","000-15.jpg",
+        "000-16.jpg","000-17.jpg","000-18.jpg","000-19.jpg","000-20.jpg",
+        "000-21.jpg","000-22.jpg","000-23.jpg","000-24.jpg","000-25.jpg"
+      ];
+
+      const container = document.currentScript.parentElement;
+      gallery.forEach((src, i) => {
+        const div = document.createElement("div");
+        div.className = "photo";
+        div.style.animationDelay = `${i * 0.05}s`;
+        div.innerHTML = `
+          <a href="images/${src}" data-lightbox="gallery" data-title="EchoCycle — Process ${i+1}">
+            <img src="images/${src}" alt="photo ${i+1}" style="width:100%; display:block;">
+          </a>
+          <div class="caption">EchoCycle · Setup Scene ${i+1}</div>
+        `;
+        container.appendChild(div);
+      });
+    </script>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 10) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+  </script>
+
+</body>
+</html>
