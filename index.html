@@ -6,137 +6,69 @@
   <title>踏聲樂章 EchoCycle｜公共藝術聲音互動裝置</title>
   <meta name="description" content="《踏聲樂章 EchoCycle》七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ooxshiuanlin.github.io/echo-cycle/" />
-  <meta property="og:title" content="踏聲樂章 EchoCycle｜公共藝術聲音互動裝置" />
-  <meta property="og:description" content="以七台腳踏車與概念樹構成聲光互動場域，觀眾踩踏轉化為能量與聲音的低碳共演。" />
-  <meta property="og:image" content="https://ooxshiuanlin.github.io/echo-cycle/preview.jpg" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="踏聲樂章 EchoCycle｜公共藝術聲音互動裝置" />
-  <meta property="twitter:description" content="以七台腳踏車與概念樹構成聲光互動場域，觀眾踩踏轉化為能量與聲音的低碳共演。" />
-  <meta property="twitter:image" content="https://ooxshiuanlin.github.io/echo-cycle/preview.jpg" />
-
   <style>
-    :root{
-      --bg:#000; --fg:#e0e0e0; --muted:#bdbdbd; --line:#151515; --glow:#00ffff;
-    }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;line-height:1.85}
-    a{color:var(--glow);text-decoration:none}
-    a:hover{filter:brightness(1.15);text-shadow:0 0 8px var(--glow)}
+    html,body{margin:0;padding:0;font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;color:#fff;line-height:1.85;background:#000}
+    header{position:fixed;top:0;width:100%;text-align:center;background:#0d0d0d;color:#fff;padding:40px 0;z-index:10;transition:all .6s ease;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+    h1{margin:0;font-size:2.5em;letter-spacing:1px}
+    body.scrolled header{padding:20px 0;opacity:.9}
 
-    /* ===== Hero（純黑，保留光暈＋縮放＋淡出） ===== */
-    header{position:relative;text-align:center;padding:120px 20px;color:#fff;min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#000;transition:opacity .6s ease}
-    header::before{content:'';position:absolute;inset:0;background:radial-gradient(140% 100% at 50% 10%, rgba(0,255,255,.12), transparent 60%);transition:opacity .4s ease, filter .4s ease}
-    header::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.28) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.84) 100%);transition:background .35s ease, opacity .35s ease}
-    header h1, header p{position:relative;z-index:1}
-    h1{font-size:2.8em;margin:0 0 10px;text-shadow:0 0 20px rgba(0,255,255,.7);transition:transform .35s ease, opacity .35s ease;transform-origin:center top}
-    header p{transition:opacity .35s ease;color:#cfd8dc}
+    section{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:80px 20px;transition:background 1s ease}
+    .intro{background:#111}
+    .music{background:#1a1a2e}
+    .sustain{background:#153a2a}
+    .making{background:#2b1d33}
+    .team{background:#2a2a2a}
 
-    body.scrolled header{padding:70px 16px;min-height:300px}
-    body.scrolled header h1{transform:scale(.78)}
-    body.scrolled header p{opacity:.85}
-    body.faded header{opacity:.9}
-    body.faded header::after{background:linear-gradient(to bottom, rgba(0,0,0,.45) 0%, rgba(0,0,0,.72) 55%, rgba(0,0,0,.96) 100%)}
-    body.faded header::before{opacity:.9;filter:saturate(1.15)}
+    h2{font-size:2.2em;margin-bottom:.5em}
+    p{max-width:720px;font-size:1.1em;color:#e0e0e0}
 
-    /* ===== Panel 佈局（純黑全文字） ===== */
-    .panel{min-height:88vh;display:grid;place-items:center;padding:6rem 1.25rem;border-top:1px solid var(--line)}
-    .panel__inner{max-width:1040px;width:100%}
-    .panel--dark{background:#000}
-    .panel h2{font-size:clamp(28px,4vw,44px);margin:0 0 .5rem;color:#e7fdfd;letter-spacing:.02em}
-    .panel p{font-size:clamp(16px,2.2vw,20px);color:#d0d0d0;max-width:72ch}
-    .lead{font-size:clamp(18px,2.6vw,24px);color:#fff}
-
-    .reveal{opacity:0;transform:translateY(24px);transition:.6s ease}
-    .reveal.on{opacity:1;transform:none}
-
-    footer{border-top:1px solid var(--line);padding:28px 10px;background:#0b0b0b;color:#9e9e9e;text-align:center}
-
-    @media (max-width:760px){
-      header{min-height:320px;padding:90px 16px}
-      h1{font-size:2.1em}
-      .panel{padding:4.5rem 1rem}
-    }
+    footer{text-align:center;background:#0b0b0b;padding:20px;color:#888}
   </style>
 </head>
 <body>
 
-  <!-- HERO 純黑頂區，保留縮小與淡出效果 -->
   <header>
-    <h1>踏聲樂章｜EchoCycle</h1>
-    <p>公共藝術聲音互動裝置 · 國立成功大學科技藝術碩士學位學程</p>
+    <h1>踏聲樂章 EchoCycle</h1>
   </header>
 
-  <!-- Panels：每屏純黑全文字 -->
-  <section class="panel panel--dark" id="intro">
-    <div class="panel__inner">
-      <h2 class="reveal">作品簡介 · Introduction</h2>
-      <p class="lead reveal">《踏聲樂章》以「低碳行動」為核心隱喻：觀眾的踩踏被轉譯為能量的聲光回饋。每一台腳踏車如同一件樂器，既可獨奏亦可合奏；中央「概念樹」以燈光匯聚眾人能量，象徵人與環境的共振循環。作品結合 TouchDesigner 聲光資料流、Phidgets 感測、DMX 燈控與多聲道音訊，回應「在公共空間如何以藝術化方式理解永續」。</p>
-      <p class="reveal"><em>EchoCycle</em> transforms human motion into a symphony of light and sound. Each bicycle acts as an instrument—solo or ensemble—while the Concept Tree responds to collective energy. Integrating TouchDesigner, Phidgets, DMX, and multi‑channel audio, the work explores how sustainability can be perceived through interactive art.</p>
-    </div>
+  <section class="intro">
+    <h2>作品簡介 · Introduction</h2>
+    <p>《踏聲樂章》以「低碳行動」為核心隱喻：觀眾的踩踏被轉譯為能量的聲光回饋。每一台腳踏車如同一件樂器，既可獨奏亦可合奏；中央「概念樹」以燈光匯聚眾人能量，象徵人與環境的共振循環。作品結合 TouchDesigner 聲光資料流、Phidgets 感測、DMX 燈控與多聲道音訊，回應「在公共空間如何以藝術化方式理解永續」。</p>
   </section>
 
-  <section class="panel panel--dark" id="music">
-    <div class="panel__inner">
-      <h2 class="reveal">音樂設計 · Music Design</h2>
-      <p class="reveal"><strong>音樂概念：</strong>待機模式中，音樂與概念樹的「呼吸燈」對應，營造大自然寧靜卻充滿生命力的氛圍；融入台灣特有鳥鳴，增添在地與自然質地；間或響起「學校鐘聲」的旋律，帶入熟悉而溫暖的記憶。整體以 10 分鐘為循環單位，持續而柔和。騎乘模式下，7 台腳踏車對應七種不同樂器；任一腳踏車被啟動，系統即與待機音樂切換；每台可觸發三種速度（節奏）變化，後輪轉速將驅動概念樹與底座閃燈，與音樂同步加快或放慢。</p>
-      <p class="reveal"><strong>Music Concept:</strong> In standby, the composition synchronizes with the Concept Tree’s breathing lights, evoking calm vitality. Native Taiwanese birdsong adds local, organic texture; a familiar school‑bell motif surfaces at times, bringing warmth and memory. The score loops every 10 minutes for a gentle continuum. In riding mode, seven bikes map to seven instruments; activation seamlessly switches from ambient to interactive. Each bike offers three rhythmic tiers; wheel speed modulates both the lights and the musical tempo.</p>
-    </div>
+  <section class="music">
+    <h2>音樂設計 · Music Design</h2>
+    <p>待機模式中，音樂與概念樹的「呼吸燈」對應，營造自然寧靜氛圍；融入台灣特有鳥鳴與學校鐘聲旋律，帶入熟悉與溫暖。整體以 10 分鐘為循環單位。騎乘模式下，7 台腳踏車對應七種不同樂器，隨著踩踏速度變化，概念樹與底座閃燈與音樂節奏同步。</p>
   </section>
 
-  <section class="panel panel--dark" id="sustainability">
-    <div class="panel__inner">
-      <h2 class="reveal">永續與再利用 · Sustainability & Reuse</h2>
-      <p class="reveal">裝置採工業模組化設計，腳踏車僅低度改裝，展後可恢復使用；感測器與線材可於後續專案再利用；鋁擠型結構可再製為書櫃或置物架；玻璃搭配 IKEA 桌腳即可化為書桌。設計不僅概念上呼應低碳循環，也在材料生命週期上落實再利用。</p>
-      <p class="reveal">Built on modular industrial standards, bicycles are minimally modified and revertible to daily use; sensors and wiring are reusable; aluminum profiles repurpose into furniture; glass panels pair with off‑the‑shelf legs to become desks. Circularity is enacted both as metaphor and material practice.</p>
-    </div>
+  <section class="sustain">
+    <h2>永續與再利用 · Sustainability & Reuse</h2>
+    <p>裝置採工業模組化設計，腳踏車低度改裝，展後可恢復使用；感測器與線材可再利用；鋁擠型結構可轉製為書櫃或置物架，玻璃搭配 IKEA 桌腳可化為書桌。設計不僅呼應低碳循環，也落實材料再利用。</p>
   </section>
 
-  <section class="panel panel--dark" id="making">
-    <div class="panel__inner">
-      <h2 class="reveal">施工記錄 · Making‑of</h2>
-      <p class="reveal">本作品的製作與安裝過程已整理為影片記錄，涵蓋結構測試、感測整合、燈控與多聲道音訊配置等流程。你可以在此觀看：<a href="https://youtu.be/NRmSQRPIjX4" target="_blank" rel="noreferrer">YouTube：EchoCycle Construction Record</a>。</p>
-    </div>
+  <section class="making">
+    <h2>施工記錄 · Making-of</h2>
+    <p>製作與安裝過程涵蓋結構測試、感測整合、燈控與多聲道音訊配置，可於 <a href="https://youtu.be/NRmSQRPIjX4" target="_blank">YouTube</a> 觀看。</p>
   </section>
 
-  <section class="panel panel--dark" id="team">
-    <div class="panel__inner">
-      <h2 class="reveal">專案團隊 · Project Team</h2>
-      <p class="reveal"><strong>主持 / Lead Artist：</strong>林軒丞（國立成功大學 助理教授）</p>
-      <p class="reveal"><strong>聲音創作 / Sound Artist：</strong>王翕慈（RUI）</p>
-      <p class="reveal"><strong>執行團隊 / Team Members：</strong>徐薇、范姜政佑、邱靖惠、許佩賢、姜佳欣</p>
-      <p class="reveal"><strong>互動系統 / System Integration：</strong>互動空間運算研究室（ISC Lab, TechnoArt Program / NCKU）</p>
-      <p class="reveal"><strong>合作單位 / Partners：</strong>衛武營國家藝術文化中心</p>
-      <p class="reveal"><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></p>
-    </div>
+  <section class="team">
+    <h2>專案團隊 · Project Team</h2>
+    <p><strong>主持 / Lead Artist：</strong>林軒丞（國立成功大學 助理教授）</p>
+    <p><strong>聲音創作 / Sound Artist：</strong>王翕慈（RUI）</p>
+    <p><strong>執行團隊 / Team Members：</strong>徐薇、范姜政佑、邱靖惠、許佩賢、姜佳欣</p>
+    <p><strong>互動系統 / System Integration：</strong>互動空間運算研究室（ISC Lab, TechnoArt Program / NCKU）</p>
+    <p><strong>合作單位 / Partners：</strong>衛武營國家藝術文化中心</p>
+    <p><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></p>
   </section>
 
   <footer>
-    <div class="panel__inner" style="text-align:center">
-      © 2025 EchoCycle — National Cheng Kung University · Techno‑Art Program
-    </div>
+    © 2025 EchoCycle — National Cheng Kung University · Techno-Art Program
   </footer>
 
   <script>
-    // Header 動畫：縮小 + 淡出
-    (function(){
-      function onScroll(){
-        const y = window.scrollY || 0;
-        document.body.classList.toggle('scrolled', y>80);
-        document.body.classList.toggle('faded', y>200);
-      }
-      onScroll();
-      window.addEventListener('scroll', onScroll, {passive:true});
-    })();
-
-    // Panel reveal on scroll
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
-    },{threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    window.addEventListener('scroll',()=>{
+      document.body.classList.toggle('scrolled',window.scrollY>60);
+    });
   </script>
 </body>
 </html>
