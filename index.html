@@ -6,149 +6,72 @@
   <title>踏聲樂章 EchoCycle｜公共藝術聲音互動裝置</title>
   <meta name="description" content="《踏聲樂章 EchoCycle》七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。" />
   <style>
-    /* ——— Base ——— */
-    :root{
-      --bg:#000;
-      --fg:#e0e0e0;
-      --muted:#bdbdbd;
-      --line:#222;
-      --glow:#00ffff;
-      --accent:#63f5d5;
-    }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;line-height:1.8}
-    a{color:var(--glow);text-decoration:none}
-    a:hover{filter:brightness(1.2);text-shadow:0 0 8px var(--glow)}
-    .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-    h1,h2,h3{letter-spacing:.02em}
-    h2{color:var(--glow);border-left:5px solid var(--glow);padding-left:12px;margin:56px 0 12px}
-    p{color:#ccc;margin:8px 0}
-    ul{margin:8px 0 0 0;padding:0;list-style:none}
-    li{margin:8px 0}
-    .btn{display:inline-block;padding:10px 16px;border:1px solid var(--glow);border-radius:10px}
-    .btn:hover{box-shadow:0 0 16px rgba(0,255,255,.35)}
-    .card{background:#0a0a0a;border:1px solid var(--line);border-radius:16px;padding:18px}
-    .grid{display:grid;gap:16px}
-    .grid-2{grid-template-columns:1fr 1fr}
-    .muted{color:var(--muted)}
-    /* ——— Hero ——— */
-    header{
-      position:relative;text-align:center;padding:90px 0 60px;
-      background:radial-gradient(1200px 500px at 50% -10%, rgba(0,255,255,.25), transparent 60%),
-                 radial-gradient(800px 400px at 10% 20%, rgba(255,255,0,.15), transparent 60%),
-                 linear-gradient(#02050a,#000)
-    }
-    header h1{font-size:42px;margin:0 0 8px;text-shadow:0 0 20px rgba(0,255,255,.35)}
-    header p{max-width:760px;margin:0 auto 16px;color:#cfd8dc}
-    nav{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);border-bottom:1px solid #111}
-    nav .wrap{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:10px 20px}
-    /* ——— Sections ——— */
-    section{padding:36px 0;border-top:1px solid var(--line)}
-    .video{aspect-ratio:16/9;width:100%;border:0;border-radius:14px;box-shadow:0 0 28px rgba(0,255,255,.25)}
-    footer{border-top:1px solid var(--line);padding:28px 0;background:#0b0b0b;color:#9e9e9e;text-align:center}
-    /* ——— Responsive ——— */
-    @media (max-width:760px){
-      header{padding:64px 0 44px}
-      header h1{font-size:30px}
-      .grid-2{grid-template-columns:1fr}
-    }
+    body {background:#000;color:#e0e0e0;font-family:'Noto Sans TC','Helvetica Neue',sans-serif;line-height:1.8;margin:0;padding:0}
+    a{color:#00ffff;text-decoration:none}
+    a:hover{text-shadow:0 0 8px #00ffff}
+    header{text-align:center;padding:80px 20px;background:radial-gradient(circle at center,#0ff,#002)}
+    h1{font-size:2.5em;margin:0 0 10px;text-shadow:0 0 20px rgba(0,255,255,.6)}
+    h2{border-left:5px solid #0ff;padding-left:12px;margin-top:60px;color:#00ffff}
+    section{max-width:900px;margin:0 auto;padding:40px 20px}
+    p{font-size:1.1em;color:#ccc}
+    .card{background:#0a0a0a;padding:20px;border-radius:10px;margin-bottom:20px;border:1px solid #111}
+    iframe{width:100%;height:400px;border:0;border-radius:10px;box-shadow:0 0 25px rgba(0,255,255,.3)}
+    footer{text-align:center;background:#111;color:#888;padding:30px 10px;margin-top:60px}
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav>
-    <div class="wrap">
-      <a href="#intro" class="btn">作品簡介</a>
-      <a href="#sustain" class="btn">永續與再利用</a>
-      <a href="#making" class="btn">施工記錄</a>
-      <a href="#lab" class="btn">研究室簡介</a>
-      <a href="#team" class="btn">專案團隊</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
   <header>
-    <div class="wrap">
-      <h1>踏聲樂章｜EchoCycle</h1>
-      <p>七台腳踏車 × 概念樹：把日常的踩踏，轉譯成可被聽見與看見的聲音與光。<br>國立成功大學 科技藝術碩士學位學程 · 互動空間運算研究室</p>
-      <p><a class="btn" href="#making">▶ 觀看施工記錄</a></p>
-    </div>
+    <h1>踏聲樂章｜EchoCycle</h1>
+    <p>公共藝術聲音互動裝置 · 國立成功大學科技藝術碩士學位學程</p>
   </header>
 
-  <!-- INTRO -->
   <section id="intro">
-    <div class="wrap">
-      <h2>作品簡介 · Introduction</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <p><strong>《踏聲樂章》</strong>以「低碳行動」為核心隱喻：觀眾的踩踏被轉譯成即時的聲光回饋。每一台腳踏車就像一件樂器，能獨奏，也能協奏；中央「概念樹」以燈光匯聚眾人能量，象徵人與環境的共振循環。作品結合 <strong>TouchDesigner</strong> 聲光資料流、<strong>Phidgets</strong> 感測、<strong>DMX</strong> 燈控與<strong>多聲道音訊</strong>，回應「如何在公共空間以藝術方式理解永續」。</p>
-          <p><strong>音樂概念</strong>在待機模式中，音樂與概念樹的「呼吸燈」對應，營造出大自然寧靜卻充滿生命力的氛圍。音樂中融入了台灣特有鳥類的鳴聲，使聆聽體驗更具在地特色與自然感。此外，音樂中時而響起「學校鐘聲」的弦律，為環境增添一種熟悉而溫暖的記憶感。整體設計以 10 分鐘為一循環單位，不斷重複播放，帶來持續、柔和的氛圍。</p>
-          <p>騎乘模式時，展覽共設置 7 台腳踏車，分別對應七種不同樂器。隨機一台腳踏車有民眾使用時，會立即與待機音樂做切換。每一台腳踏車可觸發樂器的三種速度（節奏）變化。隨著後輪轉速不同，概念樹與腳踏車底座的閃燈會與音樂同步加快或放慢。</p>
-
-        </div>
-        <div class="card">
-          <p><em>EchoCycle</em> transforms pedaling into a symphony of light and sound. Each bicycle acts as a musical instrument—solo or in ensemble—while the central <em>Concept Tree</em> responds to collective energy. Integrating <strong>TouchDesigner</strong>, <strong>Phidgets</strong> sensors, <strong>DMX</strong> lighting and <strong>multi-channel audio</strong>, the work turns sustainability into an experience one can both hear and see.</p>
-        </div>
-      </div>
+    <h2>作品簡介 · Introduction</h2>
+    <div class="card">
+      <p><strong>《踏聲樂章》</strong>以「低碳行動」為核心隱喻：觀眾的踩踏被轉譯為能量的聲光回饋，每一台腳踏車如同一件樂器，既可獨奏亦可合奏；中央「概念樹」以燈光匯聚眾人能量，象徵人與環境的共振循環。作品結合 TouchDesigner 聲光資料流、Phidgets 感測、DMX 燈控與多聲道音訊，回應「在公共空間如何以藝術化方式理解永續」。</p>
+      <p><em>EchoCycle</em> transforms human motion into a symphony of light and sound. Each bicycle acts as an individual instrument, resonating with the central "conceptual tree," symbolizing the cycle of human and environmental harmony. Integrating TouchDesigner, Phidgets, DMX, and multi-channel sound design, the work explores how sustainability can be perceived through interactive art.</p>
     </div>
   </section>
 
-  <!-- SUSTAINABILITY -->
-  <section id="sustain">
-    <div class="wrap">
-      <h2>永續與再利用 · Sustainability & Reuse</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <p>裝置採 <strong>工業模組化</strong>設計，腳踏車僅<strong>低度改裝</strong>，展後可恢復使用；感測器與線材能再利用於後續專案；鋁擠型可再製成書櫃與置物架；玻璃加上 IKEA 桌腳即可變成書桌。裝置不再是一個「一次性」的展品，而是實踐<strong>低碳與循環再生</strong>的設計。</p>
-        </div>
-        <div class="card">
-          <p>Built with <strong>modular industrial standards</strong>, bicycles receive <strong>minimal modification</strong> and can return to daily use. Sensors and wiring are reusable across future projects; aluminum framing is repurposable into furniture; glass panels pair with IKEA legs to become desks. Sustainability is embodied both conceptually and physically.</p>
-        </div>
-      </div>
+  <section id="music">
+    <h2>音樂設計 · Music Design</h2>
+    <div class="card">
+      <p><strong>音樂概念：</strong>在待機模式中，音樂與概念樹的「呼吸燈」對應，營造出大自然寧靜卻充滿生命力的氛圍。音樂中融入了台灣特有鳥類的鳴聲，使聆聽體驗更具在地特色與自然感。此外，音樂中時而響起「學校鐘聲」的弦律，為環境增添一種熟悉而溫暖的記憶感。整體設計以 10 分鐘為一循環單位，不斷重複播放，帶來持續、柔和的氛圍。騎乘模式時，展覽共設置 7 台腳踏車，分別對應七種不同樂器。隨機一台腳踏車有民眾使用時，會立即與待機音樂做切換。每一台腳踏車可觸發樂器的三種速度（節奏）變化。隨著後輪轉速不同，概念樹與腳踏車底座的閃燈會與音樂同步加快或放慢。</p>
+      <p><strong>Music Concept:</strong> In standby mode, the music synchronizes with the Concept Tree’s “breathing lights,” creating an atmosphere of natural serenity and vitality. The soundscape incorporates calls of Taiwan’s native birds, enhancing the local and organic texture. Intermittently, the melody of a familiar school bell emerges, evoking warmth and nostalgia. The entire composition loops every 10 minutes, providing a continuous, gentle soundscape. During riding mode, seven bicycles correspond to seven different instruments. Once a bicycle is activated, it switches seamlessly from the ambient track to interactive sound. Each bike triggers three rhythm variations, and as the wheel speed changes, both the Concept Tree and the LED bases flash in sync with the music tempo.</p>
     </div>
   </section>
 
-  <!-- MAKING-OF VIDEO -->
-  <section id="making">
-    <div class="wrap">
-      <h2>施工記錄 · Making-of</h2>
-      <iframe class="video" src="https://www.youtube.com/embed/NRmSQRPIjX4" title="EchoCycle Construction Record" allowfullscreen></iframe>
-      <p class="muted">若無法播放，請前往：<a href="https://youtu.be/NRmSQRPIjX4" target="_blank" rel="noreferrer">YouTube 連結</a></p>
+  <section id="sustainability">
+    <h2>永續與再利用 · Sustainability & Reuse</h2>
+    <div class="card">
+      <p>以工業規格的模矩化設計尺寸設計，低度改裝腳踏車。在展覽後，腳踏車可恢復正常使用，感測器與線材可重複運用於後續專案，鋁擠型結構可再製為書櫃或置物架，玻璃搭配 IKEA 桌腳即可成為書桌。此結構設計不僅呼應「低碳與再利用」的永續展覽宣言，也實踐了藝術裝置的循環再生理念。</p>
+      <p>Built with modular industrial design standards, the installation allows all components to be reused: bicycles can return to daily use, sensors and wiring can support future projects, aluminum framing can be repurposed into furniture, and glass panels can transform into desks. This design embodies circular sustainability both conceptually and physically.</p>
     </div>
   </section>
 
-  <!-- LAB INTRO -->
-  <section id="lab">
-    <div class="wrap">
-      <h2>研究室簡介 · Lab Intro</h2>
-      <div class="card">
-        <p>國立成功大學 <strong>互動空間運算研究室</strong>（Interactive Spatial Computing Lab）專注於公共藝術、互動媒體與空間計算的跨域實作。研究涵蓋資料驅動的聲光設計、即時互動系統、可拆裝的模組化展演架構，以及永續材料的再利用；並與場館、學校與產業夥伴合作，將研究成果落實於現地展演。</p>
-      </div>
-    </div>
+  <section id="video">
+    <h2>施工記錄 · Making-of</h2>
+    <iframe src="https://www.youtube.com/embed/NRmSQRPIjX4" title="EchoCycle Construction Record" allowfullscreen></iframe>
   </section>
 
-  <!-- TEAM -->
   <section id="team">
-    <div class="wrap">
-      <h2>專案團隊 · Project Team</h2>
-      <div class="card">
-        <ul>
-          <li><strong>計畫主持人 / Lead Artist：</strong>林軒丞（國立成功大學 助理教授）</li>
-          <li><strong>聲音創作 / Sound Artist：</strong>王翕慈</li>
-          <li><strong>執行團隊 / Team Members：</strong> 徐葳、范姜政佑、邱靖惠、許佩賢、姜佳欣 </li>
-          <li><strong>互動系統 / System Integration：</strong>互動空間運算研究室（Techno-Art / NCKU）</li>
-          <li><strong>合作單位 / Partners：</strong>衛武營國家藝術文化中心、國立成功大學</li>
-          <li><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></li>
-        </ul>
-      </div>
+    <h2>專案團隊 · Project Team</h2>
+    <div class="card">
+      <ul>
+        <li><strong>主持 / Lead Artist：</strong>林軒丞（國立成功大學 助理教授）</li>
+        <li><strong>聲音創作 / Sound Artist：</strong>王翕慈</li>
+        <li><strong>執行團隊 / Team Members：</strong>徐葳、范姜政佑、邱靖惠、許佩賢、姜佳欣</li>
+        <li><strong>互動系統 / System Integration：</strong>互動空間運算研究室（Techno-Art / NCKU）</li>
+
+
+        <li><strong>合作單位 / Partners：</strong>衛武營國家藝術文化中心、國立成功大學</li>
+        <li><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></li>
+      </ul>
     </div>
   </section>
 
   <footer>
-    <div class="wrap">
-      © 2025 EchoCycle — National Cheng Kung University · Techno-Art Program
-    </div>
+    <p>© 2025 國立成功大學科技藝術碩士學位學程 | 互動空間運算研究室</p>
   </footer>
-
 </body>
 </html>
