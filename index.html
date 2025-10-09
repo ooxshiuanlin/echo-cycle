@@ -6,6 +6,8 @@
   <title>踏聲樂章 EchoCycle｜公共藝術聲音互動裝置</title>
   <meta name="description" content="《踏聲樂章 EchoCycle》七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。" />
   <style>
+    :root{--headerH:120px}
+
     html{scroll-behavior:smooth}
     body{margin:0;padding:0;font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;color:#fff;line-height:1.85;background:#000;overflow-x:hidden}
 
@@ -25,7 +27,7 @@
     nav a.active::after{transform:scaleX(1)}
 
     /* Panels */
-    section{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden}
+    section{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden;scroll-margin-top:var(--headerH)}
     section .content{max-width:820px;z-index:2;position:relative}
     section::before{content:"";position:absolute;inset:0;z-index:0;opacity:.55;background-size:cover;background-position:center;filter:brightness(1.2) contrast(1.1);animation:slowZoom 40s ease-in-out infinite alternate}
     section::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.12),rgba(0,0,0,0.68));z-index:1}
@@ -36,6 +38,7 @@
     .sustain::before{background-image:url('sustain-bg.jpg')}
     .making::before{background-image:url('making-bg.jpg')}
     .team::before{background-image:url('team-bg.jpg')}
+    .gallery::before{background-image:url('gallery-bg.jpg')}
 
     /* Typography */
     h2{font-size:1.6em;margin-bottom:.4em}
@@ -49,10 +52,32 @@
 
     footer{text-align:center;background:#0b0b0b;padding:20px;color:#888;font-size:.9rem}
 
+    /* Gallery */
+    .gallery .content{max-width:1100px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:12px}
+    .grid a{position:relative;border-radius:12px;overflow:hidden;display:block;background:#0e0e0e}
+    .grid img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;opacity:.92;transition:transform .35s ease, box-shadow .35s ease, opacity .3s ease, filter .3s ease}
+    .grid a:hover img{transform:scale(1.03);opacity:1;filter:contrast(1.06)}
+    .grid .cap{position:absolute;left:0;right:0;bottom:0;padding:.45rem .6rem;font-size:.9rem;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0));color:#e8ffff}
+
+    /* Lightbox */
+    dialog#lightbox{padding:0;border:none;border-radius:12px;overflow:hidden;background:#000;max-width:92vw}
+    dialog#lightbox::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(2px)}
+    #lightbox img{display:block;max-width:92vw;max-height:86vh}
+    #lightbox .bar{display:flex;justify-content:space-between;align-items:center;padding:.5rem .75rem;background:rgba(20,20,20,.85);color:#dff}
+    #lightbox button{display:inline-flex;align-items:center;gap:.35rem;background:#102525;color:#bff;border:1px solid #1f3f3f;border-radius:10px;padding:.35rem .65rem;cursor:pointer}
+    #lightbox button:hover{background:#173636}
+    @media (max-width:760px){.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}}
+
     /* Text animations */
     @keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
     .reveal{opacity:0;transform:translateY(14px);position:relative}
     .reveal.on{opacity:1;transform:none;animation:fadeInUp .7s ease both}
+  
+    @media (max-width:760px){
+      /* extra top space for first panel under fixed header on phones */
+      .intro{padding-top:calc(60px + var(--headerH))}
+    }
   </style>
 </head>
 <body>
@@ -64,6 +89,7 @@
       <a href="#sustainability">永續 / Sustainability</a>
       <a href="#making">製作記錄 / Making‑of</a>
       <a href="#team">團隊 / Team</a>
+          <a href="#gallery">相片集 / Gallery</a>
     </nav>
   </header>
 
@@ -121,8 +147,8 @@
   <section class="team" id="team">
     <div class="content">
       <h2 class="reveal">專案團隊 · Project Team</h2>
-      <p class="reveal"><strong>主持 / Lead Artist：</strong>林軒丞（國立成功大學 科技藝術碩士學位學程/建築系 助理教授）
-        <span class="en"><strong>Lead Artist:</strong> HsuanCheng Lin (Assistant Professor, Master Program in TechnoArt/Drpt. of Architecture,  NCKU)</span>
+      <p class="reveal"><strong>主持 / Lead Artist：</strong>林軒丞（國立成功大學 助理教授）
+        <span class="en"><strong>Lead Artist:</strong> Shiuan‑Cheng Lin (Assistant Professor, NCKU)</span>
       </p>
       <p class="reveal"><strong>聲音創作 / Sound Artist：</strong>王翕慈（RUI）
         <span class="en"><strong>Sound Artist:</strong> RUI (Hsi‑Tzu Wang)</span>
@@ -139,6 +165,27 @@
       <p class="reveal"><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a>
         <span class="en"><strong>Contact:</strong> shiuanlin@ncku.edu.tw</span>
       </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="content">
+      <h2 class="reveal">相片集 · Gallery</h2>
+      <p class="reveal">展覽與製作過程影像紀錄將持續更新。
+        <span class="en">Photo documentation of the exhibition and making‑of will be updated here.</span>
+      </p>
+
+      <!-- ✳︎ 使用方式：把照片放到 /gallery/ 資料夾，並在下方加入一行：
+        <a href="gallery/IMG_0001.jpg"><img loading="lazy" src="gallery/IMG_0001.jpg" alt=""/></a>
+        可選在 <a> 裡面加 <span class="cap">說明文字</span> 作為圖說。
+      -->
+      <div class="grid reveal" id="galleryGrid">
+        <!-- 目前沒有上傳圖時，顯示占位文案 -->
+        <div style="opacity:.85;color:#cfe;grid-column:1/-1;background:rgba(0,0,0,.35);border:1px dashed rgba(255,255,255,.15);border-radius:12px;padding:14px;">
+          尚未上傳相片（Coming soon）。請將檔案放入 <code>/gallery/</code> 目錄後，依上方註解新增縮圖連結。
+        </div>
+      </div>
     </div>
   </section>
 
@@ -160,6 +207,27 @@
     const setActive=id=>{links.forEach(a=>{const is=a.getAttribute('href')===`#${id}`;a.classList.toggle('active',is);});};
     const navIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){setActive(e.target.id);}})},{rootMargin:'-45% 0% -45% 0%'});
     sections.forEach(s=>navIO.observe(s));
+    // Lightbox (vanilla)
+    const lightbox=document.getElementById('lightbox')||(()=>{const d=document.createElement('dialog');d.id='lightbox';d.innerHTML=`<div class="bar"><span id="lbcap"></span><button id="lbclose" aria-label="close">關閉 Close</button></div><img alt=""/>`;document.body.appendChild(d);return d})();
+    const lbImg=lightbox.querySelector('img');
+    const lbCap=lightbox.querySelector('#lbcap');
+    const lbClose=lightbox.querySelector('#lbclose');
+    lbClose.addEventListener('click',()=>lightbox.close());
+    lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.close()});
+    document.getElementById('galleryGrid')?.addEventListener('click',e=>{
+      const a=e.target.closest('a'); if(!a) return; e.preventDefault();
+      lbImg.src=a.getAttribute('href'); lbCap.textContent=a.querySelector('.cap')?.textContent||''; lightbox.showModal();
+    });
+    // Dynamically measure header height to prevent anchor overlap on mobile
+    const header=document.querySelector('header');
+    function setHeaderSpace(){
+      const h=header?.offsetHeight||96; // fallback
+      document.documentElement.style.setProperty('--headerH', (h+8)+'px');
+    }
+    window.addEventListener('load', setHeaderSpace);
+    window.addEventListener('resize', setHeaderSpace);
+    new ResizeObserver(()=>setHeaderSpace()).observe(header);
+    window.addEventListener('scroll',()=>setHeaderSpace(),{passive:true});
   </script>
 </body>
 </html>
