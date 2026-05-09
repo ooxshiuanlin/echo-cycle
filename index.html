@@ -3,192 +3,570 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>踏聲樂章 EchoCycle｜公共藝術聲音互動裝置</title>
-  <meta name="description" content="《踏聲樂章 EchoCycle》七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。" />
-<!-- SEO 基本設定 -->
-<meta name="description" content="《踏聲樂章 EchoCycle》為國立成功大學科技藝術團隊創作的公共聲光互動裝置，結合低碳行動、音樂生成與光影循環。">
-<meta name="keywords" content="EchoCycle, 踏聲樂章, 成功大學, 科技藝術, 公共藝術, 互動裝置, 光影設計, TouchDesigner, NCKU">
-<meta name="author" content="國立成功大學 規劃與設計學院 科技藝術碩士學位學程">
 
-<!-- Open Graph / 社群預覽 -->
-<meta property="og:title" content="踏聲樂章 EchoCycle｜公共藝術聲光互動裝置">
-<meta property="og:description" content="七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。">
-<meta property="og:image" content="https://ooxshiualnin.github.io/echo-cycle/preview.jpg">
-<meta property="og:url" content="https://ooxshiualnin.github.io/echo-cycle/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+  <title>踏聲樂章 EchoCycle｜公共藝術聲音互動裝置</title>
+
+  <meta name="description" content="《踏聲樂章 EchoCycle》七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。" />
+
+  <!-- SEO -->
+  <meta name="keywords" content="EchoCycle, 踏聲樂章, 成功大學, 科技藝術, 公共藝術, 互動裝置, 光影設計, TouchDesigner, NCKU">
+  <meta name="author" content="國立成功大學 規劃與設計學院 科技藝術碩士學位學程">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="踏聲樂章 EchoCycle｜公共藝術聲音互動裝置">
-  <meta property="og:description" content="觀眾踩踏轉為聲光回饋，七台腳踏車與概念樹共創的低碳樂章。">
+  <meta property="og:title" content="踏聲樂章 EchoCycle｜公共藝術聲光互動裝置">
+  <meta property="og:description" content="七台腳踏車與概念樹的聲光互動裝置：以低碳行動為隱喻，將踩踏轉譯為聲音與光。">
   <meta property="og:image" content="preview.jpg">
-  <meta property="og:url" content="https://<你的網域或GitHub Pages網址>/">
+  <meta property="og:url" content="https://ooxshiuanlin.github.io/echo-cycle/">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    :root{--maskTop:linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.6));}
-    html{scroll-behavior:smooth}
-    body{margin:0;padding:0;font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;color:#fff;line-height:1.9;background:#000;overflow-x:hidden}
+    :root{
+      --maskTop:linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.68));
+    }
 
-    /* Header / Nav */
-    header{position:fixed;inset:0 0 auto 0;width:100%;background:rgba(0,0,0,0);backdrop-filter:saturate(120%) blur(10px);
-      color:#fff;text-align:center;padding:30px 0;z-index:1000;transition:background .45s ease,padding .35s ease,opacity .35s ease,box-shadow .35s ease}
-    h1{margin:0;font-size:2em;letter-spacing:1px}
-    body.scrolled10 header{background:rgba(0,0,0,.78);box-shadow:0 6px 22px rgba(0,0,0,.35)}
-    body.scrolled60 header{padding:12px 0;opacity:.95}
+    html{
+      scroll-behavior:smooth;
+    }
 
-    nav{display:flex;justify-content:center;gap:.6rem;margin-top:8px;flex-wrap:wrap}
-    nav a{position:relative;overflow:hidden;color:#aefcff;text-decoration:none;padding:.45rem .95rem;border:1px solid #1c2e2e;border-radius:999px;
-      font-size:.9rem;background:#101414;transition:background .25s ease,color .25s ease,border-color .25s ease,box-shadow .45s ease,transform .2s ease;opacity:.95}
-    nav a:hover{background:#162121;color:#fff;transform:translateY(-2px) scale(1.03);box-shadow:0 4px 12px rgba(0,255,255,.12)}
-    nav a:active{transform:scale(.95);box-shadow:inset 0 0 10px rgba(0,255,255,.25)}
-    nav a::after{content:"";position:absolute;left:12%;right:12%;bottom:-2px;height:2px;background:linear-gradient(90deg,transparent,#7ff,transparent);
-      transform:scaleX(0);transform-origin:center;transition:transform .45s ease}
-    nav a.active{background:#0c1c1c;color:#eaffff;border-color:#2aa6a6;box-shadow:inset 0 0 0 1px rgba(42,166,166,.8),inset 0 10px 26px rgba(0,255,255,.12),0 8px 22px rgba(0,255,255,.08)}
-    nav a.active::after{transform:scaleX(1)}
-    nav a::before{content:"";position:absolute;left:8%;right:8%;top:36%;height:34%;background:linear-gradient(to bottom,rgba(255,255,255,.16),rgba(255,255,255,0));
-      border-radius:999px;opacity:0;transition:opacity .45s ease}
-    nav a.active::before{opacity:.55}
-    nav a{transition:transform .18s ease, box-shadow .3s ease, color .25s ease}
-    nav a:hover{transform:translateY(-2px)}
-    nav a:not(:hover){box-shadow:0 0 0 0 rgba(0,0,0,0)}
+    body{
+      margin:0;
+      padding:0;
+      font-family:"Noto Sans TC","Helvetica Neue",Arial,sans-serif;
+      color:#fff;
+      line-height:1.9;
+      background:#000;
+      overflow-x:hidden;
+    }
+
+    /* Header */
+
+    header{
+      position:fixed;
+      inset:0 0 auto 0;
+      width:100%;
+      background:rgba(0,0,0,0);
+      backdrop-filter:saturate(120%) blur(10px);
+      color:#fff;
+      text-align:center;
+      padding:30px 0;
+      z-index:1000;
+      transition:
+        background .45s ease,
+        padding .35s ease,
+        opacity .35s ease,
+        box-shadow .35s ease;
+    }
+
+    h1{
+      margin:0;
+      font-size:2em;
+      letter-spacing:1px;
+      font-weight:500;
+    }
+
+    body.scrolled10 header{
+      background:rgba(0,0,0,.78);
+      box-shadow:0 6px 22px rgba(0,0,0,.35);
+    }
+
+    body.scrolled60 header{
+      padding:12px 0;
+      opacity:.95;
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:.6rem;
+      margin-top:8px;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      position:relative;
+      overflow:hidden;
+      color:#aefcff;
+      text-decoration:none;
+      padding:.45rem .95rem;
+      border:1px solid #1c2e2e;
+      border-radius:999px;
+      font-size:.9rem;
+      background:#101414;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .45s ease,
+        transform .2s ease;
+
+      opacity:.95;
+    }
+
+    nav a:hover{
+      background:#162121;
+      color:#fff;
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:0 4px 12px rgba(0,255,255,.12);
+    }
+
+    nav a.active{
+      background:#0c1c1c;
+      color:#eaffff;
+      border-color:#2aa6a6;
+      box-shadow:
+        inset 0 0 0 1px rgba(42,166,166,.8),
+        inset 0 10px 26px rgba(0,255,255,.12),
+        0 8px 22px rgba(0,255,255,.08);
+    }
 
     /* Sections */
-    section{min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden}
-    section .content{max-width:900px;z-index:2;position:relative}
-    section::before{content:"";position:absolute;inset:0;z-index:0;opacity:.55;background-size:cover;background-position:center;
-      filter:brightness(1.25) contrast(1.08) saturate(1.06);animation:slowZoom 40s ease-in-out infinite alternate}
-    section::after{content:"";position:absolute;inset:0;background:var(--maskTop);z-index:1}
-    @keyframes slowZoom {from{transform:scale(1)}to{transform:scale(1.05)}}
 
-    .intro::before{background-image:url('preview.jpg'), url('preview.png')}
-    .music::before{background-image:url('music-bg.jpg'), url('music-bg.png')}
-    .sustain::before{background-image:url('sustain-bg.jpg'), url('sustain-bg.png')}
-    .making::before{background-image:url('making-bg.jpg'), url('making-bg.png')}
-    .team::before{background-image:url('team-bg.jpg'), url('team-bg.png')}
-
-    h2{font-size:1.8em;margin:.2em 0 .4em}
-    p{max-width:780px;font-size:1.06em;color:#e6e6e6;margin:.35em auto}
-    .lead{font-size:1.22em;color:#fff}
-
-    .video{width:min(100%,900px);aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.4);margin-top:10px}
-    footer{text-align:center;background:#0b0b0b;padding:20px;color:#888;font-size:.9rem}
-
-    /* Text reveal */
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-    @keyframes sheen{0%{opacity:0;transform:translateX(-120%)}30%{opacity:.85}100%{opacity:0;transform:translateX(120%)}}
-    .reveal{opacity:0;transform:translateY(16px);position:relative}
-    .reveal.on{opacity:1;transform:none;animation:fadeInUp .7s ease both}
-    .reveal.on::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 50%,transparent);pointer-events:none;
-      animation:sheen 1.1s .2s ease both}
-
-    /* mobile fix: first section top padding set by JS */
-    .first-pad{padding-top:var(--firstPad, 0px)}
-    @media (max-width: 640px){
-      h1{font-size:1.6em}
-      section{min-height:68vh;padding:52px 18px}
+    section{
+      min-height:72vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:60px 20px;
+      position:relative;
+      overflow:hidden;
     }
+
+    section .content{
+      max-width:900px;
+      z-index:2;
+      position:relative;
+    }
+
+    section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      opacity:.55;
+      background-size:cover;
+      background-position:center;
+      filter:brightness(1.25) contrast(1.08) saturate(1.06);
+      animation:slowZoom 40s ease-in-out infinite alternate;
+    }
+
+    section::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:var(--maskTop);
+      z-index:1;
+    }
+
+    @keyframes slowZoom {
+      from{transform:scale(1)}
+      to{transform:scale(1.05)}
+    }
+
+    .intro::before{
+      background-image:url('preview.jpg'), url('preview.png');
+    }
+
+    .music::before{
+      background-image:url('music-bg.jpg'), url('music-bg.png');
+    }
+
+    .sustain::before{
+      background-image:url('sustain-bg.jpg'), url('sustain-bg.png');
+    }
+
+    .making::before{
+      background-image:url('making-bg.jpg'), url('making-bg.png');
+    }
+
+    .team::before{
+      background-image:url('team-bg.jpg'), url('team-bg.png');
+    }
+
+    h2{
+      font-size:1.8em;
+      margin:.2em 0 .4em;
+      font-weight:500;
+    }
+
+    p{
+      max-width:780px;
+      font-size:1.06em;
+      color:#e6e6e6;
+      margin:.35em auto;
+    }
+
+    .lead{
+      font-size:1.22em;
+      color:#fff;
+    }
+
+    /* Video */
+
+    .video{
+      width:min(100%, 960px);
+      aspect-ratio:16/9;
+      border:0;
+      border-radius:16px;
+      box-shadow:0 12px 40px rgba(0,0,0,.45);
+      margin-top:40px;
+      overflow:hidden;
+    }
+
+    footer{
+      text-align:center;
+      background:#0b0b0b;
+      padding:20px;
+      color:#888;
+      font-size:.9rem;
+    }
+
+    /* Reveal Animation */
+
+    @keyframes fadeInUp{
+      from{
+        opacity:0;
+        transform:translateY(16px);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    @keyframes sheen{
+      0%{
+        opacity:0;
+        transform:translateX(-120%);
+      }
+      30%{
+        opacity:.85;
+      }
+      100%{
+        opacity:0;
+        transform:translateX(120%);
+      }
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(16px);
+      position:relative;
+    }
+
+    .reveal.on{
+      opacity:1;
+      transform:none;
+      animation:fadeInUp .7s ease both;
+    }
+
+    .reveal.on::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.18) 50%,
+          transparent
+        );
+
+      pointer-events:none;
+      animation:sheen 1.1s .2s ease both;
+    }
+
+    .first-pad{
+      padding-top:var(--firstPad, 0px);
+    }
+
+    @media (max-width: 640px){
+
+      h1{
+        font-size:1.6em;
+      }
+
+      section{
+        min-height:68vh;
+        padding:52px 18px;
+      }
+
+      p{
+        font-size:1em;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
+
   <header id="topbar">
+
     <h1>踏聲樂章 EchoCycle</h1>
+
     <nav>
       <a href="#intro">Introduction</a>
       <a href="#music">Music</a>
       <a href="#sustainability">Sustainability</a>
       <a href="#making">Making-of</a>
       <a href="#team">Team</a>
-      <!-- 新增：相片日誌外頁 -->
-      <a href="gallery.html" title="Photo Journal">Photo Journal</a>
+      <a href="gallery.html">Photo Journal</a>
     </nav>
+
   </header>
 
-  <!-- Intro -->
+  <!-- INTRO -->
+
   <section class="intro first-pad" id="intro">
+
     <div class="content">
+
       <h2 class="reveal">作品簡介 · Introduction</h2>
-      <p class="lead reveal">《踏聲樂章》以「低碳行動」為核心隱喻，觀眾的踩踏被轉譯為能量的聲光回饋。是一場關於「人、環境與能量」的共鳴實驗。</p>
-      <p class="reveal">七台改裝腳踏車與中央的「概念樹」構成聲光互動場域，當觀眾開始踩踏，能量在空間中流動、轉譯為光與聲的脈動。每一次加速、每一段節奏，都是一次微小卻確實的能量生成行動。裝置以「低碳行動」為隱喻，將日常的踩踏行為轉化為藝術化的能量循環，讓人感知自身參與環境共生的節奏。燈光在中央樹幹間呼吸閃爍，彷彿自然在回應人的律動；聲音的層次隨速度變化交織成一場即興樂章。作品不僅是一件互動藝術，更是一種對永續未來的詩意想像——當藝術回歸生活的節奏，能否讓我們重新聽見世界的呼吸？</p>
-      <p class="reveal">EchoCycle is an experiment in resonance—between humans, the environment, and energy.Seven modified bicycles and a central “Concept Tree” form an interactive field of light and sound. As participants pedal, motion becomes energy, and energy transforms into luminous pulses and musical textures. Every acceleration, every rhythm, becomes a subtle yet tangible act of creation. The installation takes “low-carbon action” as its metaphor, translating the everyday act of cycling into an artistic loop of regeneration. The lights within the Concept Tree breathe in response to collective movement, while the layered soundscape shifts with the riders’ pace, composing an ever-changing symphony of human presence. EchoCycle is more than an interactive artwork—it is a poetic vision of sustainability. When art reconnects with the rhythm of life, can we once again hear the breath of the world?</p>
+
+      <p class="lead reveal">
+        《踏聲樂章》以「低碳行動」為核心隱喻，
+        觀眾的踩踏被轉譯為能量的聲光回饋。
+        是一場關於「人、環境與能量」的共鳴實驗。
+      </p>
+
+      <p class="reveal">
+        七台改裝腳踏車與中央的「概念樹」構成聲光互動場域，
+        當觀眾開始踩踏，能量在空間中流動、
+        轉譯為光與聲的脈動。
+        每一次加速、每一段節奏，
+        都是一次微小卻確實的能量生成行動。
+      </p>
+
+      <p class="reveal">
+        EchoCycle is an experiment in resonance—
+        between humans, the environment, and energy.
+        Seven modified bicycles and a central “Concept Tree”
+        form an interactive field of light and sound.
+      </p>
+
+      <!-- HERO VIDEO -->
+
+      <iframe
+        class="video reveal"
+        src="https://www.youtube.com/embed/3YXnKfvhXpo?autoplay=1&mute=1&loop=1&playlist=3YXnKfvhXpo&modestbranding=1&rel=0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+
     </div>
+
   </section>
 
-  <!-- Music -->
+  <!-- MUSIC -->
+
   <section class="music" id="music">
+
     <div class="content">
+
       <h2 class="reveal">音樂設計 · Music Design</h2>
-      <p class="reveal">待機模式：在待機模式中，音樂與概念樹的「呼吸燈」對應，營造出大自然寧靜卻充滿生命力的氛圍。音樂中融入了台灣特有鳥類的鳴聲，使聆聽體驗更具在地特色與自然感。音樂中時而響起「學校鐘聲」的弦律，為環境增添一種熟悉而溫暖的記憶感。整體設計以 10 分鐘為一循環單位，不斷重複播放，帶來持續、柔和的氛圍。</p>
-      <p class="reveal">騎乘模式：展覽共設置 7 台腳踏車，分別對應七種不同樂器。隨機一台腳踏車有民眾使用時，會立即與待機音樂做切換。每一台腳踏車可觸發樂器的三種速度（節奏）變化。隨著後輪轉速不同，概念樹與腳踏車底座的閃燈會與音樂同步加快或放慢。</p>
-      <p class="reveal">Standby Mode:
-In standby mode, the music corresponds with the “breathing light” of the conceptual tree, creating a tranquil yet vibrant atmosphere reminiscent of nature. The soundscape integrates calls of endemic Taiwanese birds, giving the listening experience a distinctive local and organic quality. Interwoven within the composition are melodic fragments of “school bell chimes,” evoking a sense of warmth and familiarity. The entire sound design operates on a ten-minute looping cycle, continuously replaying to maintain a soft and immersive ambience.Cycling Mode: The installation features seven bicycles, each corresponding to a distinct musical instrument. When any one of the bicycles is in use, the system immediately transitions from standby music to cycling mode. Each bicycle can trigger three rhythmic variations of its assigned instrument. As the rear wheel’s rotation speed changes, the flashing lights on both the conceptual tree and the bicycle base adjust in sync with the tempo, visually and sonically reflecting the rider’s motion.</p>
+
+      <p class="reveal">
+        展覽共設置七台腳踏車，
+        分別對應七種不同樂器。
+        當觀眾踩踏時，
+        系統即時將速度轉譯為節奏與光影變化，
+        形成動態的群體樂章。
+      </p>
+
+      <p class="reveal">
+        The installation features seven bicycles,
+        each corresponding to a distinct musical instrument.
+        As riders pedal at different speeds,
+        the soundscape and lighting evolve collectively in real time.
+      </p>
+
     </div>
+
   </section>
 
-  <!-- Sustainability -->
+  <!-- SUSTAINABILITY -->
+
   <section class="sustain" id="sustainability">
+
     <div class="content">
+
       <h2 class="reveal">永續與再利用 · Sustainability</h2>
-      <p class="reveal">工業模組化尺寸、低度改裝腳踏車：展後可恢復使用；感測與線材可回收再用；鋁擠型可轉製為書櫃/置物架；玻璃+IKEA 桌腳可成一張好用的書桌。</p>
-      <p class="reveal">Modular, low-impact design enables re-use: bikes revert to normal, sensors & cabling migrate to new builds, aluminum profiles become furniture.</p>
+
+      <p class="reveal">
+        工業模組化尺寸與低度改裝設計，
+        使裝置可於展後拆解再利用。
+        腳踏車、感測器、鋁擠型與線材
+        皆可重新配置於新的場域之中。
+      </p>
+
+      <p class="reveal">
+        Modular and reusable construction enables
+        the installation to evolve beyond a single exhibition.
+      </p>
+
     </div>
+
   </section>
 
-  <!-- Making-of -->
+  <!-- MAKING -->
+
   <section class="making" id="making">
+
     <div class="content">
+
       <h2 class="reveal">施工記錄 · Making-of</h2>
-      <p class="reveal">以下影片展示結構測試、感測整合、燈控與多聲道音訊配置。</p>
-      <iframe class="video reveal" src="https://www.youtube.com/embed/NRmSQRPIjX4?autoplay=1&mute=1&loop=1&playlist=NRmSQRPIjX4&modestbranding=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+
+      <p class="reveal">
+        以下影片展示結構測試、
+        感測整合、
+        燈光控制與多聲道音訊配置。
+      </p>
+
+      <iframe
+        class="video reveal"
+        src="https://www.youtube.com/embed/3YXnKfvhXpo?autoplay=1&mute=1&loop=1&playlist=3YXnKfvhXpo&modestbranding=1&rel=0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+
     </div>
+
   </section>
 
-  <!-- Team -->
+  <!-- TEAM -->
+
   <section class="team" id="team">
+
     <div class="content">
+
       <h2 class="reveal">專案團隊 · Team</h2>
-      <p class="reveal"><strong>計畫主持人 / Lead Artist：</strong>林軒丞（國立成功大學 科技藝術碩士學位學程/建築系 助理教授）</p>
-      <p class="reveal"><strong>聲音創作 / Sound Artist：</strong>王翕慈（RUI）</p>
-      <p class="reveal"><strong>執行團隊 / Team Members：</strong>徐薇、范姜政佑、邱靖惠、許珮賢、姜佳欣</p>
-      <p class="reveal"><strong>互動系統 / System Integration：</strong>互動空間運算研究室（ISC Lab, TechnoArt / NCKU）</p>
-      <p class="reveal"><strong>合作單位 / Partners：</strong>衛武營國家藝術文化中心</p>
-      <p class="reveal"><strong>聯絡 / Contact：</strong><a href="mailto:shiuanlin@ncku.edu.tw">shiuanlin@ncku.edu.tw</a></p>
+
+      <p class="reveal">
+        <strong>計畫主持人 / Lead Artist：</strong>
+        林軒丞
+      </p>
+
+      <p class="reveal">
+        <strong>聲音創作 / Sound Artist：</strong>
+        王翕慈（RUI）
+      </p>
+
+      <p class="reveal">
+        <strong>執行團隊 / Team Members：</strong>
+        徐薇、范姜政佑、邱靖惠、許珮賢、姜佳欣
+      </p>
+
+      <p class="reveal">
+        <strong>互動系統 / System Integration：</strong>
+        ISC Lab / NCKU
+      </p>
+
+      <p class="reveal">
+        <strong>合作單位 / Partners：</strong>
+        衛武營國家藝術文化中心
+      </p>
+
+      <p class="reveal">
+        <strong>聯絡 / Contact：</strong>
+        <a href="mailto:shiuanlin@ncku.edu.tw">
+          shiuanlin@ncku.edu.tw
+        </a>
+      </p>
+
     </div>
+
   </section>
 
-  <footer>© 2025 EchoCycle — National Cheng Kung University · Techno-Art Program</footer>
+  <footer>
+    © 2026 EchoCycle — National Cheng Kung University · Techno-Art Program
+  </footer>
 
   <script>
-    // Header transparency + shrink
+
+    // Header Scroll Effect
+
     const onScroll = () => {
       const y = window.scrollY || document.documentElement.scrollTop;
+
       document.body.classList.toggle('scrolled10', y > 10);
       document.body.classList.toggle('scrolled60', y > 60);
     };
-    window.addEventListener('scroll', onScroll); onScroll();
 
-    // First section top padding = header height (mobile fix)
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // First Section Padding
+
     const first = document.querySelector('.first-pad');
     const header = document.getElementById('topbar');
-    function setFirstPad(){ 
+
+    function setFirstPad(){
       const h = header.getBoundingClientRect().height;
       document.documentElement.style.setProperty('--firstPad', h + 'px');
     }
+
     window.addEventListener('load', setFirstPad);
     window.addEventListener('resize', setFirstPad);
 
-    // Reveal on view
-    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); }}); },{threshold:.2});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    // Reveal Animation
 
-    // Soft highlight current nav link while scrolling
-    const sections=[...document.querySelectorAll('section')];
-    const links=[...document.querySelectorAll('header nav a')].filter(a=>a.getAttribute('href')?.startsWith('#'));
-    const setActive=id=>{ links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===`#${id}`)); };
-    const navIO=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ setActive(e.target.id); }});
-    },{rootMargin:'-45% 0% -45% 0%'});
-    sections.forEach(s=>navIO.observe(s));
+    const io = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+          entry.target.classList.add('on');
+        }
+
+      });
+
+    }, { threshold: .2 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Nav Highlight
+
+    const sections = [...document.querySelectorAll('section')];
+
+    const links = [...document.querySelectorAll('header nav a')]
+      .filter(a => a.getAttribute('href')?.startsWith('#'));
+
+    const setActive = id => {
+
+      links.forEach(a => {
+
+        a.classList.toggle(
+          'active',
+          a.getAttribute('href') === `#${id}`
+        );
+
+      });
+
+    };
+
+    const navIO = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+          setActive(entry.target.id);
+        }
+
+      });
+
+    }, {
+      rootMargin:'-45% 0% -45% 0%'
+    });
+
+    sections.forEach(section => navIO.observe(section));
+
   </script>
+
 </body>
 </html>
